@@ -1,0 +1,575 @@
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Title  : An urdf of six dof arm for sainsmart                           -->
+<!-- Program Name : sixdofarm.cpp                                            -->
+<!--                                                                         -->
+<!-- Detail : this is an urdf of six dof arm for sainsmart.                  -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+
+<?xml version="1.0" ?>
+<robot name="sixdofarm">
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="green">
+    <color rgba="0.0 1.0 0.0 1.0"/>
+  </material>
+  <material name="blue">
+    <color rgba="0.0 0.0 1.0 1.0"/>
+  </material>
+  <link name="base"/>
+  <joint name="fixed" type="fixed">
+    <parent link="base"/>
+    <child link="link1"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link1                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link1 on base link                                             -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link1">
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.015 0 0.004"/>
+      <geometry>
+        <box size="0.11 0.08 0.008"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 0.7 0.0 1.0"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.015 0 0.004"/>
+      <geometry>
+        <box size="0.11 0.08 0.008"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 0.7 0.0 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.025"/>
+      <mass value="1"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="joint1" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin rpy="0 0 0" xyz="0 0 0.099"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="9.4" lower="-1.57079633" upper="1.57079633" velocity="3.14159265"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link2                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link2 on link1                                                 -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link2">
+    <visual>
+      <origin rpy="-1.571 0 1.571" xyz="0 0 -0.034"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 -0.062"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.03"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.062"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.03"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.7 0.0 0.0 0.7"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -2.181 0" xyz="0.043 0 0.01"/>
+      <geometry>
+        <box size="0.05 0.082 0.07"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 -2.181 0" xyz="0.043 0.032 0.0078"/>
+      <geometry>
+        <box size="0.05 0.006 0.07"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 -2.181 0" xyz="0.043 -0.032 0.0078"/>
+      <geometry>
+        <box size="0.05 0.006 0.07"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 -2.181 0" xyz="0.043 0 0.0078"/>
+      <geometry>
+        <box size="0.05 0.082 0.07"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 0.1 0.0 0.1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -2.181 0" xyz="0.035 -0.038 0"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 0.1"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="0 -2.181 0" xyz="0.035 -0.038 0"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="3.14 0.9599 0" xyz="0.035 0.038 0"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="3.14 0.9599 0" xyz="0.035 0.038 0"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="joint2" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin rpy="0 0 0" xyz="0.035 0.001 0.0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="9.4" lower="-1.39" upper="1.39" velocity="3.14159265"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link3                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link3 on link2                                                 -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.012 0.06"/>
+      <geometry>
+        <box size="0.025 0.004 0.14"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.012 0.06"/>
+      <geometry>
+        <box size="0.025 0.004 0.14"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <geometry>
+        <box size="0.025 0.028 0.14"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <geometry>
+        <box size="0.025 0.027 0.14"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 0.1 0.1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0975"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="joint3" type="revolute">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin rpy="0 0 0" xyz="0 0 0.12"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="9.4" lower="1.22" upper="3.14" velocity="3.14159265"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link4                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link4 on link3                                                 -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link4">
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.032 0 -0.026"/>
+      <geometry>
+        <box size="0.060 0.030 0.005"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.032 0 -0.026"/>
+      <geometry>
+        <box size="0.060 0.030 0.005"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.02 0.0170 -0.002"/>
+      <geometry>
+        <box size="0.025 0.003 0.055"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.02 -0.0170 -0.002"/>
+      <geometry>
+        <box size="0.025 0.003 0.055"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.02 0 -0.002"/>
+      <geometry>
+        <box size="0.025 0.045 0.055"/>
+      </geometry>
+      <material name="red"/>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.02 0 -0.002"/>
+      <geometry>
+        <box size="0.025 0.045 0.055"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 0.1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.571 0 1.571" xyz="-0.02 0 -0.0316"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="1.571 0 1.571" xyz="-0.02 0 -0.0316"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG_996R_Servo.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="joint4" type="revolute">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin rpy="0 0 0" xyz="-0.02 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="9.4" lower="-1.57079633" upper="1.57079633" velocity="3.14159265"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link5                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link5 on link4                                                 -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link5">
+    <collision>
+      <origin rpy="0 0 1.571" xyz="0.0 0 0.11"/>
+      <geometry>
+        <box size="0.037 0.03 0.054"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 0.1"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="0 0 1.571" xyz="0.0 0 0.11"/>
+      <geometry>
+        <box size="0.037 0.03 0.054"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 0.1"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 1.571" xyz="0.0 0.0175 0.11"/>
+      <geometry>
+        <box size="0.003 0.03 0.054"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 1.571" xyz="0 -0.0175 0.11"/>
+      <geometry>
+        <box size="0.003 0.03 0.054"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <geometry>
+        <cylinder length="0.065" radius="0.01"/>
+      </geometry>
+      <material name="green"/>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.06"/>
+      <geometry>
+        <cylinder length="0.065" radius="0.01"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 0.7"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -1.571 3.141" xyz="-0.0053 0.04 0.098"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG90S.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="0 -1.571 3.141" xyz="-0.0053 0.04 0.098"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG90S.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0125 0 0.1"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+    </inertial>
+  </link>
+  <joint name="joint5" type="revolute">
+    <parent link="link5"/>
+    <child link="link6"/>
+    <origin rpy="0 0 -1.571" xyz="0 0 0.12"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="3.1" lower="-1.57079633" upper="1.57079633" velocity="3.14159265"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link6                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link6 on link5                                                 -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link6">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>
+      <geometry>
+        <box size="0.03 0.045 0.03"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>
+      <geometry>
+        <box size="0.03 0.045 0.03"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 0.1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -1.571" xyz="0.0008 -0.0046 -0.006"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG90D.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </collision>
+    <visual>
+      <origin rpy="0 0 -1.571" xyz="0.0008 -0.0046 -0.006"/>
+      <geometry>
+        <mesh filename="package://sixdofarm/meshes/MG90D.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0"/>
+      <mass value="0.05"/>
+      <inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+    </inertial>
+  </link>
+  <joint name="joint6" type="revolute">
+    <parent link="link6"/>
+    <child link="link7"/>
+    <origin rpy="0 0 -1.571" xyz="0 0 0.0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="2.1" lower="-1.57079633" upper="1.57079633" velocity="6.28"/>
+  </joint>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- Link Name : link7                                                       -->
+<!--                                                                         -->
+<!-- Detail : Link7 on link6                                                 -->
+<!--                                                                         -->
+<!-- Date   : 2026/01/14                                                     -->
+<!-- Author : Akihiro Kashiwagi                                              -->
+<!-- e-mail : a-kashiwagi@hotmail.com                                        -->
+<!--                                                                         -->
+<!-- Replace =============================================================== -->
+<!--                                                                         -->
+<!-- Date   :                                                                -->
+<!-- Author :                                                                -->
+<!-- Detail :                                                                -->
+<!--                                                                         -->
+<!-- ======================================================================= -->
+  <link name="link7">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.02"/>
+      <geometry>
+        <box size="0.035 0.035 0.008"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.025"/>
+      <geometry>
+        <box size="0.035 0.035 0.008"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 0.1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0425"/>
+      <mass value="0.05"/>
+      <inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+    </inertial>
+  </link>
+</robot>
