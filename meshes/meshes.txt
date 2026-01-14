@@ -1,0 +1,6 @@
+this folder contain flowing stl files.
+
+1).MG_996R_Servo.stl
+2).MG90D.stl
+3).MG90S.stl
+4).MG92B.stl
